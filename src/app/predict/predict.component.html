@@ -1,0 +1,96 @@
+<div class="container">
+  <h1>Apartment Price Predictor</h1>
+  <form (ngSubmit)="predict()">
+    <!-- State Dropdown -->
+    <label for="governorate">Governorate:</label>
+    <select id="governorate" [(ngModel)]="selectedGovernorate" name="governorate" required
+      (change)="onGovernorateChange()">
+      <option value="" disabled>Select a Governorate</option>
+      <option *ngFor="let gov of governorates" [value]="gov">{{ gov }}</option>
+    </select>
+    <br>
+
+    <!-- Delegation Dropdown -->
+    <label for="delegation">Delegation:</label>
+    <select id="delegation" [(ngModel)]="selectedDelegation" name="delegation" required (change)="onDelegationChange()"
+      [disabled]="!selectedGovernorate">
+      <option value="" disabled>Select a Delegation</option>
+      <option *ngFor="let del of delegations" [value]="del.delegation">{{ del.delegation }}</option>
+    </select>
+    <br>
+
+    <!-- Municipality Dropdown -->
+    <label for="locality">Locality:</label>
+    <select id="locality" [(ngModel)]="selectedLocality" name="locality" required [disabled]="!selectedDelegation">
+      <option value="" disabled>Select a Locality</option>
+      <option *ngFor="let locality of localities" [value]="locality">{{ locality }}</option>
+    </select>
+    <br>
+
+    <!-- Surface Input -->
+    <label for="surface">Surface (m²):</label>
+    <input type="number" id="surface" [(ngModel)]="surface" name="surface" required
+      (input)="validateNumber($event, 'surface', 800)">
+    <br>
+
+    <!-- Bedrooms Input -->
+    <label for="bedrooms">Bedrooms:</label>
+    <input type="number" id="bedrooms" [(ngModel)]="bedrooms" name="bedrooms" required
+      (input)="validateNumber($event, 'bedrooms', 10)">
+    <br>
+
+    <!-- Bathrooms Input -->
+    <label for="bathrooms">Bathrooms:</label>
+    <input type="number" id="bathrooms" [(ngModel)]="bathrooms" name="bathrooms" required
+      (input)="validateNumber($event, 'bathrooms', 5)">
+    <br>
+
+    <!-- Floor Input -->
+    <label for="floor">Floor:</label>
+    <input type="number" id="floor" [(ngModel)]="floor" name="floor" required
+    (input)="validateNumber($event,'floor', 15)">
+    <br>
+
+    <!-- Yes/No Fields -->
+    <label>Elevator:</label>
+    <input type="radio" id="elevator-yes" [(ngModel)]="elevator" name="elevator" value="Yes" required> Yes
+    <input type="radio" id="elevator-no" [(ngModel)]="elevator" name="elevator" value="No"> No
+    <br>
+
+    <label>Equipped Kitchen:</label>
+    <input type="radio" id="kitchen-yes" [(ngModel)]="equippedKitchen" name="kitchen" value="Yes" required> Yes
+    <input type="radio" id="kitchen-no" [(ngModel)]="equippedKitchen" name="kitchen" value="No"> No
+    <br>
+
+    <label>Balcony:</label>
+    <input type="radio" id="balcony-yes" [(ngModel)]="balcony" name="balcony" value="Yes" required> Yes
+    <input type="radio" id="balcony-no" [(ngModel)]="balcony" name="balcony" value="No"> No
+    <br>
+
+    <label>Heating:</label>
+    <input type="radio" id="heating-yes" [(ngModel)]="heating" name="heating" value="Yes" required> Yes
+    <input type="radio" id="heating-no" [(ngModel)]="heating" name="heating" value="No"> No
+    <br>
+
+    <label>Air Conditioning:</label>
+    <input type="radio" id="ac-yes" [(ngModel)]="airConditioning" name="ac" value="Yes" required> Yes
+    <input type="radio" id="ac-no" [(ngModel)]="airConditioning" name="ac" value="No"> No
+    <br>
+
+    <label>Parking:</label>
+    <input type="radio" id="parking-yes" [(ngModel)]="parking" name="parking" value="Yes" required> Yes
+    <input type="radio" id="parking-no" [(ngModel)]="parking" name="parking" value="No"> No
+    <br>
+
+    <label>Garage:</label>
+    <input type="radio" id="garage-yes" [(ngModel)]="garage" name="garage" value="Yes" required> Yes
+    <input type="radio" id="garage-no" [(ngModel)]="garage" name="garage" value="No"> No
+    <br>
+
+    <button type="submit">Predict</button>
+  </form>
+
+  <div *ngIf="price !== null">
+    <h2>Predicted Price: {{ price | currency:'TND' }}</h2>
+  </div>
+</div>
