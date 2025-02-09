@@ -11,12 +11,14 @@
   flex-direction: column;
   align-items: center;
   list-style-type: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .navbar-title {
   font-family: fantasy;
   font-size: xxx-large;
-  color: green;
+  color: #005f7c;
   font-variant-caps: small-caps;
 }
 
@@ -34,7 +36,7 @@
   padding: 20px;
   border-radius: 8px;
   text-align: center;
-  margin: 40px;
+  margin: 0 40px 40px;
 
   .form-class {
     display: flex;
@@ -93,7 +95,7 @@
 
     .button {
       padding: 10px 20px;
-      background: green;
+      background: #005f7c;
       font-weight: bold;
       color: #fff;
       border: none;
@@ -102,7 +104,7 @@
     }
 
     .button:hover {
-      background: darkseagreen;
+      background: #4c8c9b;
     }
 
     &:hover {
@@ -112,7 +114,7 @@
 
     h2 {
       font-size: 30px;
-      color: #27ae60;
+      color: #876544;
       font-weight: 600;
       letter-spacing: 1px;
     }
@@ -166,7 +168,7 @@ select {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background-color: #4caf50;
+      background-color: #4c8c9b;
       position: absolute;
       top: 50%;
       left: 50%;
