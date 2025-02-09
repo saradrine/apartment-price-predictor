@@ -70,6 +70,8 @@ export class PredictComponent implements OnInit {
       delegation: this.selectedDelegation,
       municipality: this.selectedLocality,
       surface: this.surface,
+      bedrooms: this.bedrooms,
+      bathrooms: this.bathrooms,
       elevator: this.elevator,
       equipped_kitchen: this.equippedKitchen,
       balcony: this.balcony,
@@ -77,13 +79,15 @@ export class PredictComponent implements OnInit {
       air_conditioning: this.airConditioning,
       parking: this.parking,
       garage: this.garage,
+      floor: this.floor,
     };
 
     console.log('Form Data:', data);
     // Call your API service here
     this.apiService.predictPrice(data).subscribe(
       (res) => {
-
+        console.log(res);
+        this.price = res.prediction;
       },
       (error) => {
         console.error("Error", error);
