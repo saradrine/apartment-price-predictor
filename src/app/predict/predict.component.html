@@ -1,96 +1,137 @@
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li class="navbar-title">Apartement Price Predictor</li>
+    <li class="navbar-subtitle">Grand Tunis</li>
+  </ul>
+</nav>
+
 <div class="container">
-  <h1>Apartment Price Predictor</h1>
-  <form (ngSubmit)="predict()">
-    <!-- State Dropdown -->
-    <label for="governorate">Governorate:</label>
-    <select id="governorate" [(ngModel)]="selectedGovernorate" name="governorate" required
-      (change)="onGovernorateChange()">
-      <option value="" disabled>Select a Governorate</option>
-      <option *ngFor="let gov of governorates" [value]="gov">{{ gov }}</option>
-    </select>
-    <br>
+  <div class="form-class">
+    <div class="description">Get the price of the apartment of your dreams</div>
+    <form (ngSubmit)="predict()" class="form">
+      <div class="column">
+        <!-- State Dropdown -->
+        <div class="field">
+          <label for="governorate">Governorate:</label>
+          <select id="governorate" [(ngModel)]="selectedGovernorate" name="governorate" required
+            (change)="onGovernorateChange()">
+            <option value="" disabled>Select a Governorate</option>
+            <option *ngFor="let gov of governorates" [value]="gov">{{ gov }}</option>
+          </select>
+        </div>
 
-    <!-- Delegation Dropdown -->
-    <label for="delegation">Delegation:</label>
-    <select id="delegation" [(ngModel)]="selectedDelegation" name="delegation" required (change)="onDelegationChange()"
-      [disabled]="!selectedGovernorate">
-      <option value="" disabled>Select a Delegation</option>
-      <option *ngFor="let del of delegations" [value]="del.delegation">{{ del.delegation }}</option>
-    </select>
-    <br>
+        <!-- Delegation Dropdown -->
+        <div class="field">
+          <label for="delegation">Delegation:</label>
+          <select id="delegation" [(ngModel)]="selectedDelegation" name="delegation" required
+            (change)="onDelegationChange()" [disabled]="!selectedGovernorate">
+            <option value="" disabled>Select a Delegation</option>
+            <option *ngFor="let del of delegations" [value]="del.delegation">{{ del.delegation }}</option>
+          </select>
+        </div>
 
-    <!-- Municipality Dropdown -->
-    <label for="locality">Locality:</label>
-    <select id="locality" [(ngModel)]="selectedLocality" name="locality" required [disabled]="!selectedDelegation">
-      <option value="" disabled>Select a Locality</option>
-      <option *ngFor="let locality of localities" [value]="locality">{{ locality }}</option>
-    </select>
-    <br>
+        <div class="field">
+          <!-- Municipality Dropdown -->
+          <label for="locality">Locality:</label>
+          <select id="locality" [(ngModel)]="selectedLocality" name="locality" required
+            [disabled]="!selectedDelegation">
+            <option value="" disabled>Select a Locality</option>
+            <option *ngFor="let locality of localities" [value]="locality">{{ locality }}</option>
+          </select>
+        </div>
 
-    <!-- Surface Input -->
-    <label for="surface">Surface (m²):</label>
-    <input type="number" id="surface" [(ngModel)]="surface" name="surface" required
-      (input)="validateNumber($event, 'surface', 800)">
-    <br>
+        <div class="field">
+          <!-- Surface Input -->
+          <label for="surface">Surface (m²):</label>
+          <input type="number" id="surface" [(ngModel)]="surface" name="surface" required
+            (input)="validateNumber($event, 'surface', 800)">
+        </div>
 
-    <!-- Bedrooms Input -->
-    <label for="bedrooms">Bedrooms:</label>
-    <input type="number" id="bedrooms" [(ngModel)]="bedrooms" name="bedrooms" required
-      (input)="validateNumber($event, 'bedrooms', 10)">
-    <br>
+        <div class="field">
+          <!-- Bedrooms Input -->
+          <label for="bedrooms">Bedrooms:</label>
+          <input type="number" id="bedrooms" [(ngModel)]="bedrooms" name="bedrooms" required
+            (input)="validateNumber($event, 'bedrooms', 10)">
+        </div>
 
-    <!-- Bathrooms Input -->
-    <label for="bathrooms">Bathrooms:</label>
-    <input type="number" id="bathrooms" [(ngModel)]="bathrooms" name="bathrooms" required
-      (input)="validateNumber($event, 'bathrooms', 5)">
-    <br>
+        <div class="field">
+          <!-- Bathrooms Input -->
+          <label for="bathrooms">Bathrooms:</label>
+          <input type="number" id="bathrooms" [(ngModel)]="bathrooms" name="bathrooms" required
+            (input)="validateNumber($event, 'bathrooms', 5)">
+        </div>
 
-    <!-- Floor Input -->
-    <label for="floor">Floor:</label>
-    <input type="number" id="floor" [(ngModel)]="floor" name="floor" required
-    (input)="validateNumber($event,'floor', 15)">
-    <br>
+        <div class="field">
+          <!-- Floor Input -->
+          <label for="floor">Floor:</label>
+          <input type="number" id="floor" [(ngModel)]="floor" name="floor" required
+            (input)="validateNumber($event,'floor', 15)">
+        </div>
+      </div>
 
-    <!-- Yes/No Fields -->
-    <label>Elevator:</label>
-    <input type="radio" id="elevator-yes" [(ngModel)]="elevator" name="elevator" value="Yes" required> Yes
-    <input type="radio" id="elevator-no" [(ngModel)]="elevator" name="elevator" value="No"> No
-    <br>
+      <div class="column">
+        <!-- Yes/No Fields -->
+        <div class="field">
+          <label>Elevator:</label>
+          <div class="radio">
+            <input type="radio" id="elevator-yes" [(ngModel)]="elevator" name="elevator" value="Yes" required> Yes
+            <input type="radio" id="elevator-no" [(ngModel)]="elevator" name="elevator" value="No"> No
+          </div>
+        </div>
 
-    <label>Equipped Kitchen:</label>
-    <input type="radio" id="kitchen-yes" [(ngModel)]="equippedKitchen" name="kitchen" value="Yes" required> Yes
-    <input type="radio" id="kitchen-no" [(ngModel)]="equippedKitchen" name="kitchen" value="No"> No
-    <br>
+        <div class="field">
+          <label>Equipped Kitchen:</label>
+          <div class="radio">
+            <input type="radio" id="kitchen-yes" [(ngModel)]="equippedKitchen" name="kitchen" value="Yes" required> Yes
+            <input type="radio" id="kitchen-no" [(ngModel)]="equippedKitchen" name="kitchen" value="No"> No
+          </div>
+        </div>
 
-    <label>Balcony:</label>
-    <input type="radio" id="balcony-yes" [(ngModel)]="balcony" name="balcony" value="Yes" required> Yes
-    <input type="radio" id="balcony-no" [(ngModel)]="balcony" name="balcony" value="No"> No
-    <br>
+        <div class="field">
+          <label>Balcony:</label>
+          <div class="radio">
+            <input type="radio" id="balcony-yes" [(ngModel)]="balcony" name="balcony" value="Yes" required> Yes
+            <input type="radio" id="balcony-no" [(ngModel)]="balcony" name="balcony" value="No"> No
+          </div>
+        </div>
 
-    <label>Heating:</label>
-    <input type="radio" id="heating-yes" [(ngModel)]="heating" name="heating" value="Yes" required> Yes
-    <input type="radio" id="heating-no" [(ngModel)]="heating" name="heating" value="No"> No
-    <br>
+        <div class="field">
+          <label>Heating:</label>
+          <div class="radio">
+            <input type="radio" id="heating-yes" [(ngModel)]="heating" name="heating" value="Yes" required> Yes
+            <input type="radio" id="heating-no" [(ngModel)]="heating" name="heating" value="No"> No
+          </div>
+        </div>
 
-    <label>Air Conditioning:</label>
-    <input type="radio" id="ac-yes" [(ngModel)]="airConditioning" name="ac" value="Yes" required> Yes
-    <input type="radio" id="ac-no" [(ngModel)]="airConditioning" name="ac" value="No"> No
-    <br>
+        <div class="field">
+          <label>Air Conditioning:</label>
+          <div class="radio">
+            <input type="radio" id="ac-yes" [(ngModel)]="airConditioning" name="ac" value="Yes" required> Yes
+            <input type="radio" id="ac-no" [(ngModel)]="airConditioning" name="ac" value="No"> No
+          </div>
+        </div>
 
-    <label>Parking:</label>
-    <input type="radio" id="parking-yes" [(ngModel)]="parking" name="parking" value="Yes" required> Yes
-    <input type="radio" id="parking-no" [(ngModel)]="parking" name="parking" value="No"> No
-    <br>
+        <div class="field">
+          <label>Parking:</label>
+          <div class="radio">
+            <input type="radio" id="parking-yes" [(ngModel)]="parking" name="parking" value="Yes" required> Yes
+            <input type="radio" id="parking-no" [(ngModel)]="parking" name="parking" value="No"> No
+          </div>
+        </div>
 
-    <label>Garage:</label>
-    <input type="radio" id="garage-yes" [(ngModel)]="garage" name="garage" value="Yes" required> Yes
-    <input type="radio" id="garage-no" [(ngModel)]="garage" name="garage" value="No"> No
-    <br>
-
-    <button type="submit">Predict</button>
-  </form>
-
-  <div *ngIf="price !== null">
-    <h2>Predicted Price: {{ price | currency:'TND' }}</h2>
+        <div class="field">
+          <label>Garage:</label>
+          <div class="radio">
+            <input type="radio" id="garage-yes" [(ngModel)]="garage" name="garage" value="Yes" required> Yes
+            <input type="radio" id="garage-no" [(ngModel)]="garage" name="garage" value="No"> No
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="prediction-card" *ngIf="price !== null">
+    <h2>Predicted Price:</h2>
+    <div class="prix"> {{ price | currency:'TND' }}</div>
+    <button (click)="predict()" type="submit" class="button">Predict</button>
   </div>
 </div>
