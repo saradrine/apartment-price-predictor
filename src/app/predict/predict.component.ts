@@ -26,13 +26,13 @@ export class PredictComponent implements OnInit {
   bedrooms: number = 0;
   bathrooms: number = 0;
   floor: number = 0;
-  elevator: string = 'No';
-  equippedKitchen: string = 'No';
-  balcony: string = 'No';
-  heating: string = 'No';
-  airConditioning: string = 'No';
-  parking: string = 'No';
-  garage: string = 'No';
+  elevator: string = 'no';
+  equippedKitchen: string = 'no';
+  balcony: string = 'no';
+  heating: string = 'no';
+  airConditioning: string = 'no';
+  parking: string = 'no';
+  garage: string = 'no';
 
   price: number = 0;
 

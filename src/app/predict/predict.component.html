@@ -16,7 +16,7 @@
           <select id="governorate" [(ngModel)]="selectedGovernorate" name="governorate" required
             (change)="onGovernorateChange()">
             <option value="" disabled>Select a Governorate</option>
-            <option *ngFor="let gov of governorates" [value]="gov">{{ gov }}</option>
+            <option *ngFor="let gov of governorates" [value]="gov">{{ gov | titlecase }}</option>
           </select>
         </div>
 
@@ -26,7 +26,7 @@
           <select id="delegation" [(ngModel)]="selectedDelegation" name="delegation" required
             (change)="onDelegationChange()" [disabled]="!selectedGovernorate">
             <option value="" disabled>Select a Delegation</option>
-            <option *ngFor="let del of delegations" [value]="del.delegation">{{ del.delegation }}</option>
+            <option *ngFor="let del of delegations" [value]="del.delegation">{{ del.delegation | titlecase }}</option>
           </select>
         </div>
 
@@ -36,7 +36,7 @@
           <select id="locality" [(ngModel)]="selectedLocality" name="locality" required
             [disabled]="!selectedDelegation">
             <option value="" disabled>Select a Locality</option>
-            <option *ngFor="let locality of localities" [value]="locality">{{ locality }}</option>
+            <option *ngFor="let locality of localities" [value]="locality">{{ locality | titlecase }}</option>
           </select>
         </div>
 
@@ -70,60 +70,60 @@
       </div>
 
       <div class="column">
-        <!-- Yes/No Fields -->
+        <!-- yes/no Fields -->
         <div class="field">
           <label>Elevator:</label>
           <div class="radio">
-            <input type="radio" id="elevator-yes" [(ngModel)]="elevator" name="elevator" value="Yes" required> Yes
-            <input type="radio" id="elevator-no" [(ngModel)]="elevator" name="elevator" value="No"> No
+            <input type="radio" id="elevator-yes" [(ngModel)]="elevator" name="elevator" value="yes" required> yes
+            <input type="radio" id="elevator-no" [(ngModel)]="elevator" name="elevator" value="no"> no
           </div>
         </div>
 
         <div class="field">
           <label>Equipped Kitchen:</label>
           <div class="radio">
-            <input type="radio" id="kitchen-yes" [(ngModel)]="equippedKitchen" name="kitchen" value="Yes" required> Yes
-            <input type="radio" id="kitchen-no" [(ngModel)]="equippedKitchen" name="kitchen" value="No"> No
+            <input type="radio" id="kitchen-yes" [(ngModel)]="equippedKitchen" name="kitchen" value="yes" required> yes
+            <input type="radio" id="kitchen-no" [(ngModel)]="equippedKitchen" name="kitchen" value="no"> no
           </div>
         </div>
 
         <div class="field">
           <label>Balcony:</label>
           <div class="radio">
-            <input type="radio" id="balcony-yes" [(ngModel)]="balcony" name="balcony" value="Yes" required> Yes
-            <input type="radio" id="balcony-no" [(ngModel)]="balcony" name="balcony" value="No"> No
+            <input type="radio" id="balcony-yes" [(ngModel)]="balcony" name="balcony" value="yes" required> yes
+            <input type="radio" id="balcony-no" [(ngModel)]="balcony" name="balcony" value="no"> no
           </div>
         </div>
 
         <div class="field">
           <label>Heating:</label>
           <div class="radio">
-            <input type="radio" id="heating-yes" [(ngModel)]="heating" name="heating" value="Yes" required> Yes
-            <input type="radio" id="heating-no" [(ngModel)]="heating" name="heating" value="No"> No
+            <input type="radio" id="heating-yes" [(ngModel)]="heating" name="heating" value="yes" required> yes
+            <input type="radio" id="heating-no" [(ngModel)]="heating" name="heating" value="no"> no
           </div>
         </div>
 
         <div class="field">
           <label>Air Conditioning:</label>
           <div class="radio">
-            <input type="radio" id="ac-yes" [(ngModel)]="airConditioning" name="ac" value="Yes" required> Yes
-            <input type="radio" id="ac-no" [(ngModel)]="airConditioning" name="ac" value="No"> No
+            <input type="radio" id="ac-yes" [(ngModel)]="airConditioning" name="ac" value="yes" required> yes
+            <input type="radio" id="ac-no" [(ngModel)]="airConditioning" name="ac" value="no"> no
           </div>
         </div>
 
         <div class="field">
           <label>Parking:</label>
           <div class="radio">
-            <input type="radio" id="parking-yes" [(ngModel)]="parking" name="parking" value="Yes" required> Yes
-            <input type="radio" id="parking-no" [(ngModel)]="parking" name="parking" value="No"> No
+            <input type="radio" id="parking-yes" [(ngModel)]="parking" name="parking" value="yes" required> yes
+            <input type="radio" id="parking-no" [(ngModel)]="parking" name="parking" value="no"> no
           </div>
         </div>
 
         <div class="field">
           <label>Garage:</label>
           <div class="radio">
-            <input type="radio" id="garage-yes" [(ngModel)]="garage" name="garage" value="Yes" required> Yes
-            <input type="radio" id="garage-no" [(ngModel)]="garage" name="garage" value="No"> No
+            <input type="radio" id="garage-yes" [(ngModel)]="garage" name="garage" value="yes" required> yes
+            <input type="radio" id="garage-no" [(ngModel)]="garage" name="garage" value="no"> no
           </div>
         </div>
       </div>
