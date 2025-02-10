@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://127.0.0.1:5000/predict';  // Replace with your Flask API URL
+  private apiUrl =
+    'https://tunisianappartmentpriceestimator.onrender.com/predict'; // Replace with your Flask API URL
 
   constructor(private http: HttpClient) {}
 
